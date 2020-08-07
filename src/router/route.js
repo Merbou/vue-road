@@ -9,12 +9,12 @@ export default new road(function () {
      */
 
     this.route("open", [
-        { path: '/', view: 'Welcome', name: "welcome" },
-        { path: '/about', view: 'About', name: "About" },
-        { path: '/home', view: 'Home', name: "Home" },
+        { path: '/', view: 'Welcome' },
+        { path: '/about', view: 'About' },
+        { path: '/home', view: 'Home' },
     ])
     this.route("open,auth", [
-        { path: '/dashboard', view: 'dashboard', name: "Dashboard" },
+        { path: '/dashboard', view: 'dashboard' },
     ])
 
 }) 
