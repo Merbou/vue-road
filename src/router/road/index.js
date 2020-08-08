@@ -1,12 +1,13 @@
 import config from "./config"
-// import middlewares from "../middlewares"
 
 //_w : way
 //_ro : route
 //_rs : routes
-export class road {
-    constructor($callback) {
+export default class road {
+    constructor($callback, customRouteCase) {
+        this.customRouteCase = customRouteCase
         this._ro = [];
+        this.ROUTES = [];
         this.init();
         //callback with this object
         $callback.call(this);
@@ -18,7 +19,7 @@ export class road {
     init() {
         let initRoutes = config && config.routes
         Object.keys(initRoutes).forEach(middleware => {
-            this.route(middleware, initRoutes[middleware])
+            this.route(initRoutes[middleware], middleware)
         });
     }
 
@@ -28,14 +29,12 @@ export class road {
      * @param {String} middleware 
      * @param {Array} _rs 
      */
-    route(middleware, _rs) {
-        // if (Object.keys(middlewares).indexOf(middleware) === -1) return;
-        _rs = this.routeCase(_rs)
-
+    route(_rs, middleware) {
+        let middlewares = this.splitMiddleware(middleware)
+        this.ROUTES.push({ routes: [..._rs], middlewares })
+        _rs = this.customRouteCase ? this.customRouteCase(_rs) : this.routeCase(_rs)
         //assignment a routes with middleware index to _ro array
-        let _w = { routes: _rs, middlewares: this.splitMiddleware(middleware) }
-        // _w[middleware] = _rs
-        this._ro.push(_w);
+        this._ro.push({ routes: _rs, middlewares });
         return _rs
     }
 
@@ -46,7 +45,6 @@ export class road {
     */
     routeCase(routes) {
         return routes.map(_ro => {
-
             let { view, children, ..._ro_params } = _ro
             let route = {
                 ..._ro_params,
@@ -76,8 +74,10 @@ export class road {
         return (this._ro && this._ro.map(e => e.routes).flatMap(e => e)) || []
     }
 
-    get() {
-        return this._ro
+    get(middleware) {
+        console.log(this._ro)
+        let routes = !middleware ? this.ROUTES : this.ROUTES.filter(_r => _r.middlewares.indexOf(middleware) > -1).flatMap(_r => _r.routes)
+        return routes
     }
 }
 
