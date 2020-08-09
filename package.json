@@ -1,9 +1,9 @@
 {
   "private": false,
   "name": "vue-road",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "author": "Merouane Boucenna",
-  "description": "",
+  "description": "it's a plugin of Vue-router that will allow you to middlewares handler",
   "main": "/dist/index.js",
   "scripts": {
     "build": "bili --name index --plugin vue --vue.css false"
