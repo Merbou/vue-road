@@ -5,9 +5,4 @@ module.exports = {
         minify:true,
         format:["cjs","esm"]
     },
-    plugins: {
-        vue: {
-            css: false
-        }
-    }
 };

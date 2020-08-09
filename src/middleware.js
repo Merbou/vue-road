@@ -1,9 +1,11 @@
-import middlewares from "./middlewares"
-import route from "./route"
-
 export default class middleware {
 
-    constructor(router) {
+    constructor({router, middlewares,route}) {
+
+        if (!middlewares||!route) return;
+        this.middlewares = middlewares
+        this.route = route
+
         router.beforeEach((to, from, next) => {
             this.standrad({ to, from, next }, "before")
         })
@@ -15,13 +17,14 @@ export default class middleware {
     }
 
     standrad({ to, from, next }, doctrine) {
-        let _ro_ms = route.get()
-            .filter(e => e.routes.findIndex(e => e.path === to.path) > -1)
+        let _ro_ms = this.route.get()
+            .filter(e => e.routes.findIndex(e => e.path === to.path.split("/").slice(0, 2).join("/")) > -1)
             .flatMap(e => e.middlewares)
+
         _ro_ms.forEach(_ro_m => {
-            if (Object.keys(middlewares).indexOf(_ro_m) > -1 && middlewares[_ro_m][doctrine])
+            if (Object.keys(this.middlewares).indexOf(_ro_m) > -1 && this.middlewares[_ro_m][doctrine])
                 if (doctrine == "before")
-                    middlewares[_ro_m][doctrine]({ to, from })
+                    this.middlewares[_ro_m][doctrine]({ to, from })
                         .then(res => {
                             if (res === to.path) next()
                             else
@@ -34,7 +37,7 @@ export default class middleware {
                                 next(code)
                         })
                 else
-                    middlewares[_ro_m][doctrine]({ to, from })
+                    this.middlewares[_ro_m][doctrine]({ to, from })
 
         })
     }

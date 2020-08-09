@@ -6,7 +6,6 @@
   "description": "",
   "main": "/dist/index.js",
   "scripts": {
-    "dev": "vue serve src/test.vue",
     "build": "bili --name index --plugin vue --vue.css false"
   },
   "files": [
@@ -15,7 +14,6 @@
   "license": "MIT",
   "devDependencies": {
     "bili": "^5.0.5",
-    "rollup-plugin-vue": "^5.1.9",
-    "vue-template-compiler": "^2.6.11"
+    "rollup-plugin-vue": "^5.1.9"
   }
 }
