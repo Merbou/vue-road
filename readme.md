@@ -24,7 +24,7 @@ export default new vueRoad(function () {
     ], "init")
     
     this.route([
-        { path: '/admin', component: () => import('../views/dashboard.vue')}
+        { path: '/admin', component: () => import('./views/dashboard.vue')}
     ], ["auth"])
     
     this.route([
