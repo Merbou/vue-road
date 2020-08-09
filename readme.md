@@ -29,7 +29,10 @@ export default new vueRoad(function () {
     
     this.route([
         { path: '/mail', component: () => import('./views/mail.vue') }
-    ], "auth,mail")
+    ], 
+    #order is important
+    "auth,mail" #or ["auth","mail"]
+    )
 }) 
 ```
 
