@@ -1,7 +1,7 @@
 # vue-road
 >it's a plugin of Vue-router that will allow you to handle middlewares
 
- [![vue-router](https://img.shields.io/badge/vue-Router-green)](https://router.vuejs.org/) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![minified](https://badgen.net/bundlephobia/min/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![gzip](https://badgen.net/bundlephobia/minzip/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Merbou/vue-road) [![npm](https://img.shields.io/npm/v/vue-road.svg)](https://www.npmjs.com/package/vue-road)
+ [![vue-router](https://img.shields.io/badge/vue-Router-green)](https://router.vuejs.org/) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![minified](https://badgen.net/bundlephobia/min/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![gzip](https://badgen.net/bundlephobia/minzip/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Merbou/vue-road) [![npm](https://img.shields.io/badge/npm-vue--road-red)](https://www.npmjs.com/package/vue-road)
  
 vue-road is a dependency-free, lightweight plugin Vue-router that can be overwritten by yourself.
 ### How to use?
