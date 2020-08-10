@@ -56,7 +56,7 @@ const router=new Router(opts);
 
 route.middleware({ router, 
 auth:{
-    before: function () {
+    before: function ({to,from}) {
         return new Promise((resolve, reject) => {
             if(isAuth)resolve()
             reject("403")
