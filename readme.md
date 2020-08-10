@@ -1,7 +1,7 @@
 # vue-road
 >it's a plugin of Vue-router that will allow you to handle middlewares
 
- [![vue-router](https://img.shields.io/badge/vue-Router-green)](https://router.vuejs.org/) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![minified](https://badgen.net/bundlephobia/min/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![gzip](https://badgen.net/bundlephobia/minzip/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Merbou/vue-road) [![npm](https://img.shields.io/badge/npm-vue--road-red)](https://www.npmjs.com/package/vue-road)
+ [![vue-router](https://img.shields.io/badge/vue-Router-green)](https://router.vuejs.org/) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![minified](https://badgen.net/bundlephobia/min/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![gzip](https://badgen.net/bundlephobia/minzip/vue-road@1.0.0)](https://bundlephobia.com/result?p=vue-road@1.0.0) [![npm](https://img.shields.io/npm/dm/vue-road.svg)](https://npmcharts.com/compare/vue-road)[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Merbou/vue-road) [![npm](https://img.shields.io/badge/npm-vue--road-red)](https://www.npmjs.com/package/vue-road)
  
 vue-road is a dependency-free, lightweight plugin Vue-router that can be overwritten by yourself.
 ### How to use?
@@ -11,12 +11,12 @@ npm install vue-road
 
 
 ### Example
-1/ First create an instance of the road bypassing callback function, inside of callback call the route function with an array of the routes as a first parameter and middlewares as a second parameter
+1/ First create an instance of the road bypassing callback function, inside of callback ,call the route method, route method accepts two parameters, an array of the routes as a first parameter and middlewares as a second parameter
 ```
 /route
-import vueRoad from "vue-road";
+import road from "vue-road";
 
-export default new vueRoad(function () {
+export default new road(function () {
 
     this.route([
         { path: '*', redirect: '/' },
@@ -33,7 +33,10 @@ export default new vueRoad(function () {
     #order is important
     "auth,mail" #or ["auth","mail"]
     )
-}) 
+},
+#You can update routes as you want them to be provided
+callback(routes){ })
+
 ```
 
 2/ Assign all routes of your app in Vue router constructor by calling constant method
