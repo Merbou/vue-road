@@ -52,6 +52,7 @@ Vue.use(Router);
 const opts = {
   routes: route.constant(),
 }
+const router=new Router(opts);
 
 route.middleware({ router, 
 auth:{
@@ -64,7 +65,7 @@ auth:{
 }
 })
 
-export default new Router(opts);
+export default router 
 
 ```
 ### road class
