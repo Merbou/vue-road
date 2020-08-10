@@ -40,6 +40,7 @@ callback(routes){ })
 ```
 
 2/ Assign all routes of your app in Vue router constructor by calling constant method
+then Call middleware method bypassing an object contains Vue Router instance as router and object of middlewares 
 ```
 /router
 
@@ -52,17 +53,7 @@ const opts = {
   routes: route.constant(),
 }
 
-export default new Router(opts);
-
-```
-
-3/ Call middleware method bypassing an object contains Vue Router instance as router and object of middlewares 
-```
-/main.js
-
-import router from './router'
-
-road.middleware({ router, 
+route.middleware({ router, 
 auth:{
     before: function () {
         return new Promise((resolve, reject) => {
@@ -72,6 +63,9 @@ auth:{
     }
 }
 })
+
+export default new Router(opts);
+
 ```
 ### road class
 |    api    |    Description   |   parameter   |	return	|
