@@ -17,7 +17,7 @@ export default class middleware {
     }
 
     standrad({ to, from, next }, doctrine) {
-        let _ro_ms = this.route.get()
+        let _ro_ms = this.route.get(true)
             .filter(e => e.routes.findIndex(e => e.path === to.path.split("/").slice(0, 2).join("/")) > -1)
             .flatMap(e => e.middlewares)
 

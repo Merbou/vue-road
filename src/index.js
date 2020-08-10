@@ -3,7 +3,7 @@ import midd from "./middleware";
 //_ro : route
 //_rs : routes
 //_rs_mds : routes_middleswares
-export default class road {
+export default class {
     constructor($callback, customRouteCase) {
         this.customRouteCase = customRouteCase
         this._rs_mds = [];
@@ -20,36 +20,21 @@ export default class road {
     /**
      * assignment all routes to attribut _ro 
      * 
-     * @param {String} middleware 
      * @param {Array} _rs 
+     * @param {String} middleware 
      */
     route(_rs, middleware) {
         let middlewares = this.splitMiddleware(middleware)
         //assignment a routes with middlewares index to ROUTES array
-        this.ROUTES.push({ routes: [..._rs], middlewares })
+        this.ROUTES.push({ routes: _rs, middlewares })
 
         //Handle each route customRouteCase is callback 
-        _rs = this.customRouteCase ? this.customRouteCase(_rs) : this.routeCase(_rs)
+        let _rs_temp = this.customRouteCase ? this.customRouteCase(_rs.map(_r => { return { ..._r } })) : _rs
         //assignment a routes with middlewares index to _ro array
-        this._rs_mds.push({ routes: _rs, middlewares });
-        return _rs
+        this._rs_mds.push({ routes: _rs_temp, middlewares });
+        return _rs_temp
     }
 
-    /**
-    * create objects of route vueRouter form simple object
-    * 
-    * @param {Array} routes
-    */
-    routeCase(routes) {
-        return routes.map(_ro => {
-            let { children, ..._ro_params } = _ro
-            let route = {
-                ..._ro_params,
-                children: children && this.routeCase(children)
-            }
-            return route
-        })
-    }
     splitMiddleware(middleware) {
         try {
             if (Array.isArray(middleware)) return middleware
@@ -64,29 +49,45 @@ export default class road {
     /**
      * get middleswars from routes
      */
-    getMiddleswares() {
+    getMiddlewares() {
         return [...new Set(this.ROUTES.flatMap(_rs => _rs.middlewares))]
     }
 
     /**
-     * 
-     * return all routes as array of vue Router object(route)
+     *
+     * @param {Boolean} with_midd 
+     * @param {String|Array} middlewares 
+     * return routes after treatments according to middleware
      */
-    constant() {
-        return (this._rs_mds && this._rs_mds.map(e => e.routes).flatMap(e => e)) || []
+    get(with_midd, middlewares) {
+        return this.fiflater(this._rs_mds, with_midd, middlewares)
     }
 
     /**
-     * 
+     *
+     * @param {Boolean} with_midd 
      * @param {String|Array} middlewares 
-     * return routes according to middleware
+     * return routes before treatments according to middleware
      */
-    get(middlewares) {
-        if (!middlewares) return this.ROUTES
-        middlewares = Array.isArray(middlewares) ? middlewares : [middlewares]
-        return this.ROUTES.
-            filter(_r => _r.middlewares.filter(_m => middlewares.indexOf(_m) > -1).length)
-            .flatMap(_r => _r.routes)
+
+    constant(with_midd, middlewares) {
+        return this.fiflater(this.ROUTES, with_midd, middlewares)
+    }
+
+
+
+    fiflater(routes, with_midd, middlewares) {
+
+        let res
+        if (!middlewares) res = routes
+
+        else {
+            middlewares = Array.isArray(middlewares) ? middlewares : [middlewares]
+            res = routes && routes.
+                filter(_r => _r.middlewares.filter(_m => middlewares.indexOf(_m) > -1).length)
+        }
+        if (!with_midd) return res && res.flatMap(_r => _r.routes) || []
+        return res
     }
 }
 
