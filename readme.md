@@ -71,13 +71,11 @@ export default router
 ### road class
 |    api    |    Description   |   parameter   |	return	|
 | -----------------  | ---------------- | :--------: | :----------: |
-<<<<<<< HEAD
 | constant       | return routes (before treatments) by middlewares passed as the second param if the first param is false it only return routes. |Boolean,[Array,String]| Array |
 | get         | return routes (after treatments) by middlewares passed as the second param if the first param is false it only return routes. |Boolean,[Array,String] | Array |
-=======
 | constant       | return all routes as array. || Array |
 | get         | return routes according to middleware |Array,String | Array |
->>>>>>> 2a5578fa296aef8e52835982a03b26e73f9397a9
+
 | getMiddlewares  |return all used middlewares  | | Array |
 
 ## License
