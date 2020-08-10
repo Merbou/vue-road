@@ -78,7 +78,7 @@ auth:{
 | -----------------  | ---------------- | :--------: | :----------: |
 | constant       | return all routes as array. || Array |
 | get         | return routes according to middleware |Array,String | Array |
-| getMiddleswares  |return all used middlewares  | | Array |
+| getMiddlewares  |return all used middlewares  | | Array |
 
 ## License
 This project is licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License)
