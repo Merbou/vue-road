@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "vue-road",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Merouane Boucenna",
   "description": "it's a plugin of Vue-router that will allow you to middlewares handler",
   "main": "/dist/index.js",

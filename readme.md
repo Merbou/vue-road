@@ -50,7 +50,7 @@ import route from "./route"
 Vue.use(Router);
 
 const opts = {
-  routes: route.constant(),
+  routes: route.get(),
 }
 const router=new Router(opts);
 
