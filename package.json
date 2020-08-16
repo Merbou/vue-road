@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "vue-road",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "author": "Merouane Boucenna",
   "description": "it's a plugin of Vue-router that will allow you to middlewares handler",
   "main": "/dist/index.js",
@@ -15,6 +15,10 @@
   "devDependencies": {
     "bili": "^5.0.5"
   },
-  "keywords":["vue","vue-router","javascript","middlewares"]
+  "keywords":["vue","vue-router","javascript","middlewares"],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Merbou/vue-road"
+  }
 
 }
